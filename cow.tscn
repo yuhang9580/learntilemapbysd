@@ -1,0 +1,84 @@
+[gd_scene load_steps=13 format=3 uid="uid://bf66twc6qembv"]
+
+[ext_resource type="Texture2D" uid="uid://d0badmpmopvtk" path="res://arts/charactor/cow/idle_left_1.png" id="1_6opdg"]
+[ext_resource type="Texture2D" uid="uid://d2w1cikv2idfp" path="res://arts/charactor/cow/idle_left_2.png" id="2_eoxwv"]
+[ext_resource type="Texture2D" uid="uid://dja367cfq6sr2" path="res://arts/charactor/cow/idle_left_3.png" id="3_0eh5i"]
+[ext_resource type="Texture2D" uid="uid://btuw7iierhmwv" path="res://arts/charactor/cow/idle_right1.png" id="4_c3xhf"]
+[ext_resource type="Texture2D" uid="uid://dsaoqfh82vhej" path="res://arts/charactor/cow/idle_right2.png" id="5_3iofs"]
+[ext_resource type="Texture2D" uid="uid://bs624hld3q183" path="res://arts/charactor/cow/idle_right3.png" id="6_cy4w6"]
+[ext_resource type="Texture2D" uid="uid://dqxxr6vxgt4cc" path="res://arts/charactor/cow/walk_left_1.png" id="7_u8cgh"]
+[ext_resource type="Texture2D" uid="uid://bk3h1i0iev7ul" path="res://arts/charactor/cow/walk_left_2.png" id="8_lrxoc"]
+[ext_resource type="Texture2D" uid="uid://snfltcyx3stw" path="res://arts/charactor/cow/walk_right1.png" id="9_dfxco"]
+[ext_resource type="Texture2D" uid="uid://dfeusyi4mtlj5" path="res://arts/charactor/cow/walk_right2.png" id="10_v6k0t"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_3pwnw"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("1_6opdg")
+}, {
+"duration": 1.0,
+"texture": ExtResource("2_eoxwv")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_0eh5i")
+}],
+"loop": true,
+"name": &"idle_left",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("4_c3xhf")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_3iofs")
+}, {
+"duration": 1.0,
+"texture": ExtResource("6_cy4w6")
+}],
+"loop": true,
+"name": &"idle_right",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("7_u8cgh")
+}, {
+"duration": 1.0,
+"texture": ExtResource("8_lrxoc")
+}],
+"loop": true,
+"name": &"walk_left",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("9_dfxco")
+}, {
+"duration": 1.0,
+"texture": ExtResource("10_v6k0t")
+}],
+"loop": true,
+"name": &"walk_right",
+"speed": 5.0
+}]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_unehi"]
+radius = 4.0
+height = 8.0
+
+[node name="Cow" type="CharacterBody2D"]
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+z_index = 1
+y_sort_enabled = true
+sprite_frames = SubResource("SpriteFrames_3pwnw")
+animation = &"idle_left"
+offset = Vector2(0, -12)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, -5)
+shape = SubResource("CapsuleShape2D_unehi")
+
+[node name="NavigationAgent2D" type="NavigationAgent2D" parent="."]
